@@ -23,9 +23,11 @@ Please see the document [STM32F051C8 Datasheet.pdf] section 3.7
 
 //The Blue LED is on bit 8 of port C
 #define LED_PIN 8
+//The Green LED is on
 
 //Define a convenien delay value. A formula could be setup to convert from CPU frequency to actual time units
 #define DELAY_VALUE 500000
+#define DELAY_VALUE_2 100000000
 
 //This will keep the CPU busy in a loop thus creating a delay.
 //This is the simplest way to implement a delay and is called busy-loop delay
@@ -48,16 +50,20 @@ int main()
 {
   RCC_AHBENR |= 1<<IOPC_EN; // Turn on the clock source for GPIO C
   GPIOC_MODER |= PORT_MODE_OUTPUT << MODER8; // Make bit 8 an output on GPIO C
+  GPIOC_MODER |= (1<<18);
   
   while(1)// Repeat the following forever
   {
     GPIOC_ODR |= (1<<LED_PIN);// set Bit 8 (turn on LED)
-    
-	delay(DELAY_VALUE);// Hang around for a bit
-    
+    delay(DELAY_VALUE);
+    GPIOC_ODR |= (1<<9);
+    delay(DELAY_VALUE);
 	GPIOC_ODR &= ~(1<<LED_PIN); // clear Bit 8 (turn off LED)
-    
-	delay(DELAY_VALUE);// Wait for a while again
+	delay(DELAY_VALUE);
+
+	GPIOC_ODR &= ~(1<<9);
+
+	delay(2*DELAY_VALUE);// Wait for a while again
   }
   
   //will never reach this point

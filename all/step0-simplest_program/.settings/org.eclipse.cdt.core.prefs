@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.toolchain.gnu.cross.base.143020883/PATH/delimiter=\:
+environment/project/cdt.managedbuild.toolchain.gnu.cross.base.143020883/PATH/operation=replace
+environment/project/cdt.managedbuild.toolchain.gnu.cross.base.143020883/PATH/value=/home/domino/stlink/arm-none-eabi/bin
+environment/project/cdt.managedbuild.toolchain.gnu.cross.base.143020883/append=true
+environment/project/cdt.managedbuild.toolchain.gnu.cross.base.143020883/appendContributed=true
